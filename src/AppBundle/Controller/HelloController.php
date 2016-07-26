@@ -10,8 +10,9 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class HelloController
+class HelloController extends Controller
 {
 
     /**
@@ -21,5 +22,6 @@ class HelloController
     public function indexAction($name)
     {
         return new Response('<html><body>Hello '.$name.'!</body></html>');
+//        return $this->render('hello/index.html.twig', array('name' => $name));
     }
 }
