@@ -21,7 +21,11 @@ class HelloController extends Controller
 
     public function indexAction($name)
     {
-        return new Response('<html><body>Hello '.$name.'!</body></html>');
+        if ($name == "Helen") {
+            throw $this->createNotFoundException('The product does not exist');
+        }
+        else
+            return new Response('<html><body>Hello '.$name.'!</body></html>');
 //        return $this->render('hello/index.html.twig', array('name' => $name));
     }
 }
