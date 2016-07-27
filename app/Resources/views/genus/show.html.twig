@@ -1,6 +1,17 @@
-{# app/Resources/views/hello/hellow.html.twig #}
+{# app/Resources/views/genus/show.html.twig #}
 
 {% extends 'base.html.twig' %}
+
+{% block title %}
+    The Genus {{ name }}!
+{% endblock %}
+
 {% block body %}
-    <h1>Genu {{ name }}!</h1>
+
+    <ul>
+        {% for note in notes %}
+            <li>{{ note }}</li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
