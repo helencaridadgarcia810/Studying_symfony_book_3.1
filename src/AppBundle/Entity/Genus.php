@@ -33,7 +33,7 @@ class Genus
     private $speciesCount;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $funFact;
 
@@ -46,4 +46,30 @@ class Genus
     {
         $this->name = $name;
     }
+
+    public function getSubFamily()
+    {
+        return $this->subFamily;
+    }
+    public function setSubFamily($subFamily)
+    {
+        $this->subFamily = $subFamily;
+    }
+    public function getSpeciesCount()
+    {
+        return $this->speciesCount;
+    }
+    public function setSpeciesCount($speciesCount)
+    {
+        $this->speciesCount = $speciesCount;
+    }
+    public function getFunFact()
+    {
+        return $this->funFact;
+    }
+    public function setFunFact($funFact)
+    {
+        $this->funFact = $funFact;
+    }
+
 }
