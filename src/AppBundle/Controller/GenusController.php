@@ -12,9 +12,28 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use AppBundle\Entity\Genus;
 
 class GenusController extends Controller
 {
+
+    /**
+     * @Route("/genus/new")
+     */
+    public function newAction()
+    {
+        $genus = new Genus();
+        $genus->setName('Octopus'.rand(1, 100));
+
+
+        //saving data
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($genus);
+        $em->flush();
+
+        return new Response('Genus created!');
+    }
+
     /**
      * @Route("/genus/{genusName}")
      */
