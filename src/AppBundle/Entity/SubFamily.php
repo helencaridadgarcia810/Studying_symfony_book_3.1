@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: montells
- * Date: 2/08/16
- * Time: 10:42
- */
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,4 +19,9 @@ class SubFamily
      * @ORM\Column(type="string")
      */
     private $name;
+
+    public function _toString()
+    {
+        return $this->getName();
+    }
 }

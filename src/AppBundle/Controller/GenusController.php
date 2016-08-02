@@ -1,14 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: montells
- * Date: 27/07/16
- * Time: 15:44
- */
 
 namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;

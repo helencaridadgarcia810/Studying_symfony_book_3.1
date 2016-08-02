@@ -24,7 +24,7 @@ class Genus
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $subFamily;
 
