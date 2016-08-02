@@ -17,23 +17,24 @@ use AppBundle\Entity\Genus;
 class GenusController extends Controller
 {
 
-    /**
-     * @Route("/genus/new")
-     */
-    public function newAction()
-    {
-        $genus = new Genus();
-        $genus->setName('Octopus'.rand(1, 100));
-        $genus->setSubFamily('Octopodinae');
-        $genus->setSpeciesCount(rand(100, 99999));
-
-        //saving data
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($genus);
-        $em->flush();
-
-        return new Response('Genus created!');
-    }
+//    /**
+//     * @Route("/genus/new", name="admin_genus_new")
+//     */
+//    public function newAction()
+//    {
+//        $genus = new Genus();
+//        $genus->setName('Octopus'.rand(1, 100));
+//        $genus->setSubFamily('Octopodinae');
+//        $genus->setSpeciesCount(rand(100, 99999));
+//
+//        //saving data
+//        $em = $this->getDoctrine()->getManager();
+//        $em->persist($genus);
+//        $em->flush();
+//
+//        return new Response('Genus created!');
+//
+//    }
 
     /**
      * @Route("/genus")
