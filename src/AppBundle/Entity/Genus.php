@@ -29,6 +29,18 @@ class Genus
     private $subFamily;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+
+    private $isPublished;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+
+    private $firstDiscoveredAt;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $speciesCount;
@@ -72,5 +84,20 @@ class Genus
     {
         $this->funFact = $funFact;
     }
-
+    public function getIsPublished()
+    {
+        return $this->isPublished;
+    }
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
+    }
+    public function getfirstDiscoveredAt()
+    {
+        return $this->firstDiscoveredAt;
+    }
+    public function setfirstDiscoveredAt($firstDiscoveredAt)
+    {
+        $this->firstDiscoveredAt = $firstDiscoveredAt;
+    }
 }

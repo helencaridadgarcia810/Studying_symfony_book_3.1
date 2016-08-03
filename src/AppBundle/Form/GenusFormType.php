@@ -13,7 +13,10 @@ class GenusFormType extends AbstractType
             ->add('name')
             ->add('subFamily')
             ->add('speciesCount')
-            ->add('funFact');
+            ->add('funFact')
+            ->add('isPublished')
+            ->add('firstDiscoveredAt')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

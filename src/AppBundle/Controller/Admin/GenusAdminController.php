@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class GenusAdminController extends Controller
 {
     /**
-     * @Route("/genus/new", name="admin_genus_new")
+     * @Route("/admin/genus/new", name="admin_genus_new")
      */
     public function newAction(Request $request)
     {
@@ -29,11 +29,27 @@ class GenusAdminController extends Controller
             $em->flush();
 
             $this->addFlash('success', 'Genus created!');
-            return $this->redirectToRoute('admin_genus_list');
+            return $this->redirectToRoute('app_admin_genusadmin_list');
         }
 
         return $this->render('admin/genus/new.html.twig', [
             'genusForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/genus/list")
+     */
+
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $genuses = $em->getRepository('AppBundle:Genus')
+            ->findAll();
+
+        return $this->render('admin/genus/list.html.twig', [
+            'genuses' => $genuses
         ]);
     }
 }
