@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use AppBundle\Repository\SubFamilyRepository;
 
 class GenusFormType extends AbstractType
 {
@@ -13,8 +14,11 @@ class GenusFormType extends AbstractType
         $builder
             ->add('name')
             ->add('subFamily', null, [
-                'placeholder' => 'Choose a Sub Family'
-            ])
+                'placeholder' => 'Choose a Sub Family',
+                'query_builder' => function(SubFamilyRepository $repo) {
+                    return $this->createQueryBuilder('sub_family')
+                        ->orderBy('sub_family.name', 'ASC');
+                }])
             ->add('speciesCount')
             ->add('funFact')
             ->add('isPublished', ChoiceType::class, [
@@ -23,7 +27,11 @@ class GenusFormType extends AbstractType
                     'No' => false,
                 ]
             ])
-            ->add('firstDiscoveredAt')
+            ->add('firstDiscoveredAt', DateType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'js-datepicker'],
+                'html5' => false,
+            ])
         ;
     }
 
