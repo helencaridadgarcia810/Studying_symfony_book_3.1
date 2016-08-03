@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class GenusFormType extends AbstractType
 {
@@ -11,10 +12,17 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('subFamily')
+            ->add('subFamily', null, [
+                'placeholder' => 'Choose a Sub Family'
+            ])
             ->add('speciesCount')
             ->add('funFact')
-            ->add('isPublished')
+            ->add('isPublished', ChoiceType::class, [
+                'choices' => [
+                    'Yes' => true,
+                    'No' => false,
+                ]
+            ])
             ->add('firstDiscoveredAt')
         ;
     }
