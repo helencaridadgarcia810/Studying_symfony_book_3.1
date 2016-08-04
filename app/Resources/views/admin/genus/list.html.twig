@@ -11,13 +11,17 @@
         </tr>
         </thead>
         <tbody>
-        {% for genus in genuses %}
-            <tr>
-                <td>{{ genus.name }}</td>
-                <td>{{ genus.subFamily }}</td>
-                <td>{{ genus.speciesCount }}</td>
-            </tr>
-        {% endfor %}
+            {% for genus in genuses %}
+                <tr>
+                    <td>{{ genus.name }}</td>
+                    <td>{{ genus.subFamily }}</td>
+                    <td>{{ genus.speciesCount }}</td>
+                    <td>
+                        <a href="{{ path('admin_genus_edit', {'id': genus.id}) }}"> Edit </a>
+                        {#<a href="{{ path('admin_genus_edit', {'id': genus.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>#}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

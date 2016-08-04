@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Form\GenusFormType;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Genus;
 
 class GenusAdminController extends Controller
 {
@@ -50,6 +51,21 @@ class GenusAdminController extends Controller
 
         return $this->render('admin/genus/list.html.twig', [
             'genuses' => $genuses
+        ]);
+    }
+
+    /**
+     * @Route("admin/genus/{id}/edit", name="admin_genus_edit")
+     */
+    public function editAction(Request $request, Genus $genus)
+    {
+        $form = $this->createForm(GenusFormType::class, $genus);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('success', 'Genus updated!');
+        }
+        return $this->render('admin/genus/edit.html.twig', [
+            'genusForm' => $form->createView()
         ]);
     }
 }
