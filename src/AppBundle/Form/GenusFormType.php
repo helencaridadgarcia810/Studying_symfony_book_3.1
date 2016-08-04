@@ -5,7 +5,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use AppBundle\Repository\SubFamilyRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\SubFamily;
 
 class GenusFormType extends AbstractType
 {
@@ -13,11 +16,12 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('subFamily', null, [
+            ->add('subFamily', EntityType::class, [
+                'class' => SubFamily::class,
                 'placeholder' => 'Choose a Sub Family',
+
                 'query_builder' => function(SubFamilyRepository $repo) {
-                    return $this->createQueryBuilder('sub_family')
-                        ->orderBy('sub_family.name', 'ASC');
+                    return $repo->createAlphabeticalQueryBuilder();
                 }])
             ->add('speciesCount')
             ->add('funFact')
