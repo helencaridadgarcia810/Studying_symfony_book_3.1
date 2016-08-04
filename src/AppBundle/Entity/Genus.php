@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -18,11 +19,13 @@ class Genus
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -35,12 +38,15 @@ class Genus
     private $isPublished;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="date")
      */
 
     private $firstDiscoveredAt;
 
     /**
+     * * @Assert\NotBlank()
+     *  @Assert\Range(min=0, minMessage="Negative species! Come on...")
      * @ORM\Column(type="integer")
      */
     private $speciesCount;
