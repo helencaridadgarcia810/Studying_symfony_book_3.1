@@ -16,10 +16,10 @@
                 <input type="search" name="q" placeholder="Search Sea Creatures" autocomplete="off" class="search-input">
             </form>
         </div>
-        <header class="header">
+        <header id="header">
             <img class="logo-icon" src="{{ asset('images/aquanote-logo.png') }}">
             <h1 class="logo">AquaNote</h1>
-            <ul class="navi">
+            <ul class="navigation">
                 <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
                 <li><a href="#">Login</a></li>
             </ul>
@@ -32,9 +32,11 @@
             {% endfor %}
         </div>
 
-        {% block body %}{% endblock %}
+        <section class="main-col">
+            {% block body %}{% endblock %}
+        </section>
 
-        <div class="footer">
+        <div id="footer">
             <p class="footer-text">Made with <span class="heart"><3</span> <a href="https://knpuniversity.com">KnpUniversity</a></p>
         </div>
 
