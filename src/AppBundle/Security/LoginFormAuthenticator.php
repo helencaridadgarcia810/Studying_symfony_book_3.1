@@ -25,6 +25,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function getCredentials(Request $request)
     {
         $isLoginSubmit = $request->getPathInfo() == '/login' && $request->isMethod('POST');
+
         if (!$isLoginSubmit) {
             // skip authentication
             return;
@@ -33,7 +34,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $form = $this->formFactory->create(LoginForm::class);
         $form->handleRequest($request);
         $data = $form->getData();
+
+        $request->getSession()->set(
+            Security::LAST_USERNAME,
+            $data['_username']
+        );
+
         return $data;
+
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
